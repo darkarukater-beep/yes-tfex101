@@ -148,12 +148,12 @@
     .hero-grid {
       position: relative;
       display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
       grid-template-areas:
         "copy photo"
         "cta photo";
-      gap: 4px 32px;
-      align-items: end;
+      gap: 8px 36px;
+      align-items: center;
     }
     .hero-copy { grid-area: copy; }
     .hero-photo { grid-area: photo; }
@@ -232,24 +232,31 @@
     .hero-photo {
       position: relative;
       display: flex;
-      flex-direction: column;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: center;
+      align-self: center;
     }
-    .hero-photo::before {
-      content: "";
-      position: absolute;
-      width: 78%;
-      aspect-ratio: 1;
-      bottom: 8%;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(246, 201, 69, 0.28) 0%, rgba(25, 123, 89, 0.15) 42%, transparent 70%);
-      pointer-events: none;
+    .hero-photo a {
+      display: block;
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.38), 0 0 0 1px rgba(246, 201, 69, 0.18);
+      transition: transform .2s ease, box-shadow .2s ease;
+      line-height: 0;
+    }
+    .hero-photo a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 46px rgba(0, 0, 0, 0.44), 0 0 0 1px rgba(246, 201, 69, 0.32);
+    }
+    .hero-photo a:focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
     }
     .hero-photo img {
-      position: relative;
-      width: min(100%, 460px);
-      filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.35));
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     /* ===== Sections ===== */
@@ -531,7 +538,7 @@
       }
       .hero-copy, .hero-cta { width: 100%; }
       .hero-cta { padding-bottom: 12px; }
-      .hero-photo { width: min(50%, 190px); margin: 2px auto 0; }
+      .hero-photo { width: 100%; max-width: 420px; margin: 10px auto 4px; }
       .hero-photo img { width: 100%; }
       .topic-grid { grid-template-columns: 1fr; }
       .venue-grid { grid-template-columns: 1fr; }
@@ -552,7 +559,7 @@
 
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      .cta, .map-card { transition: none; }
+      .cta, .map-card, .hero-photo a { transition: none; }
     }
   </style>
 </head>
@@ -591,10 +598,12 @@
           </p>
         </div>
         <div class="hero-photo">
-          <picture>
-            <source srcset="assets/speaker.webp" type="image/webp">
-            <img src="assets/speaker.png" width="560" height="809" alt="คุณโสภณวิชญ์ เกษพิทักษ์นนท์, CISA">
-          </picture>
+          <a href="https://forms.gle/Yjez8iuQC1px182Q6" target="_blank" rel="noopener noreferrer" aria-label="ลงทะเบียนอบรมฟรี — เปิดแบบฟอร์มลงทะเบียน">
+            <picture>
+              <source srcset="assets/tfex101-poster.webp" type="image/webp">
+              <img src="assets/tfex101-poster.jpg" width="1080" height="1350" alt="โปสเตอร์อบรมฟรี TFEX 101 เริ่มจากศูนย์ ภูเก็ต 12 ธันวาคม 2569 — สแกน QR หรือคลิกเพื่อลงทะเบียน">
+            </picture>
+          </a>
         </div>
         <div class="hero-cta">
           <div class="pills" aria-label="ข้อมูลงาน">
